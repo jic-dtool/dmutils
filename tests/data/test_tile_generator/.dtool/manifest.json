@@ -1,0 +1,18 @@
+{
+  "dtoolcore_version": "3.4.0",
+  "hash_function": "md5sum_hexdigest",
+  "items": {
+    "4f924e8929b643a891c1ec64baa861b86de53d20": {
+      "hash": "5b03561f87de18be24f79989be4a6632",
+      "relpath": "images/000.png",
+      "size_in_bytes": 4994202,
+      "utc_timestamp": 1533413425.0
+    },
+    "bc3c2716cd1f930f68aa27305ce34c7e1608366b": {
+      "hash": "fe613888361a20dff0cba1aa1fbfa0f0",
+      "relpath": "masks/000.png",
+      "size_in_bytes": 25260,
+      "utc_timestamp": 1533413452.0
+    }
+  }
+}
