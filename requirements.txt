@@ -1,0 +1,12 @@
+atomicwrites==1.1.5
+attrs==18.1.0
+-e git+git@github.com:jic-dtool/dmutils.git@1112b16b847692228e2a3da0cf9e5e78017834fc#egg=dmlutils
+dtoolcore==3.6.0
+imageio==2.3.0
+more-itertools==4.3.0
+numpy==1.15.0
+Pillow==5.2.0
+pluggy==0.7.1
+py==1.5.4
+pytest==3.7.1
+six==1.11.0
