@@ -37,3 +37,42 @@ def dataset_tile_generator(dataset, ts=256):
         maskgen = tile_generator(mask, ts=ts)
         for itile, mtile in zip(imgen, maskgen):
             yield itile, mtile
+
+
+class ImageMaskGenerator(object):
+
+    @classmethod
+    def __init__(self, dataset, ts=256):
+
+        self.dataset = dataset
+        self.ts = ts
+
+        self.tgen = dataset_tile_generator(dataset, ts)
+
+    def __len__(self):
+
+        count = 0
+        for imid in identifiers_where_overlay_is_true(self.dataset, "is_image"):
+            im = imread(self.dataset.item_content_abspath(imid))
+            rows, cols = im.shape[0], im.shape[1]
+
+            nr = rows//self.ts
+            nc = cols//self.ts
+
+            count += nr * nc
+
+        return count
+
+    def __next__(self):
+
+        try:
+            itile, mtile =  next(self.tgen)
+
+        except StopIteration:
+            self.tgen = dataset_tile_generator(self.dataset, self.ts)
+            itile, mtile = next(self.tgen)
+
+        X = itile.reshape(1, self.ts, self.ts, 3)
+        Y = mtile.reshape(1, self.ts, self.ts, 1)
+
+        return X, Y

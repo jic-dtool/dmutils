@@ -8,9 +8,8 @@ import numpy as np
 
 from imageio import imread
 
-
-_HERE = os.path.dirname(__file__)
-TEST_SAMPLE_DATA = os.path.join(_HERE, "data")
+from . import TEST_DATASET
+from . import TEST_SAMPLE_DATA
 
 
 def test_tile_generation():
@@ -39,9 +38,7 @@ def test_dataset_tile_generation():
 
 	from dmlutils import dataset_tile_generator
 
-	ds_path = os.path.join(TEST_SAMPLE_DATA, 'test_tile_generator')
-	dataset = dtoolcore.DataSet.from_uri(ds_path)
-	dgen = dataset_tile_generator(dataset)
+	dgen = dataset_tile_generator(TEST_DATASET)
 	
 	image, mask = next(dgen)
 	assert image.shape == (256, 256, 3)
