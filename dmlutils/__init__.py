@@ -1,6 +1,8 @@
 
 from imageio import imread
 
+from keras.preprocessing.image import ImageDataGenerator
+
 
 def identifiers_where_overlay_is_true(dataset, overlay_name):
 
@@ -48,6 +50,14 @@ class ImageMaskGenerator(object):
         self.ts = ts
 
         self.tgen = dataset_tile_generator(dataset, ts)
+
+        data_gen_args = dict(
+                     rotation_range=90.,
+                     width_shift_range=0.1,
+                     height_shift_range=0.1,
+                     zoom_range=0.2)
+
+        self.image_datagen = ImageDataGenerator(**data_gen_args)
 
     def __len__(self):
 

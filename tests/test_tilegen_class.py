@@ -16,5 +16,11 @@ def test_tilegen_class():
 		assert X.shape == (1, 256, 256, 3)
 		assert Y.shape == (1, 256, 256, 1)
 
-	# from imageio import imsave
-	# imsave('t.png', X[0,:,:,:])
+
+def test_randomisation():
+
+	from dmlutils import ImageMaskGenerator
+
+	imgen = ImageMaskGenerator(TEST_DATASET)
+
+	
